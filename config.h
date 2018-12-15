@@ -5,9 +5,9 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Liberation Mono:pixelsize=12:antialias=true:autohint=true";
+static char *font = "terminus:pixelsize=16:antialias=true:autohint=true:lang=ru";
 static int borderpx = 2;
-
+#define histsize 65000
 /*
  * What program is execed by st depends of these precedence rules:
  * 1: program passed with -e
@@ -16,7 +16,7 @@ static int borderpx = 2;
  * 4: value of shell in /etc/passwd
  * 5: value of shell in config.h
  */
-static char *shell = "/bin/sh";
+static char *shell = "/bin/zsh";
 char *utmp = NULL;
 char *stty_args = "stty raw pass8 nl -echo -iexten -cstopb 38400";
 
@@ -83,7 +83,7 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 
 /* Terminal colors (16 first used in escape sequence) */
-static const char *colorname[] = {
+static const char *colorname_original[] = {
 	/* 8 normal colors */
 	"black",
 	"red3",
@@ -110,6 +110,34 @@ static const char *colorname[] = {
 	"#cccccc",
 	"#555555",
 };
+
+static const char *colorname[] = {
+  
+	"#002b36", /* hard contrast: #1d2021 / soft contrast: #32302f */
+	"#cc241d", // red
+ 	"#98971a",
+	"#d79921",
+	"#224d58",
+	"#b16286",
+	"#2aa198", // prompt
+	//"#a89984",
+	"#839496",
+	
+	"#928374",
+	"#fb4934",
+	"#b8bb26",
+	"#fabd2f",
+	"#83a598",
+	"#d3869b",
+	"#8ec07c",
+	"#ebdbb2",
+	//"#ff0000",
+	[255] = 0,
+	/* more colors can be added after 255 to use with DefaultXX */
+	"#cccccc",   /* 256 -> bg */
+	"#555555",   /* 257 -> fg */
+};
+
 
 
 /*
